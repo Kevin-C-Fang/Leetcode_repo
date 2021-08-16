@@ -1,0 +1,37 @@
+# Kevin Fang
+# 08/16/2014
+# Reverse Integer
+# https://leetcode.com/problems/reverse-integer/
+
+""" Description: Given a signed 32-bit integer x, return x with its digits reversed. If reversing x causes the value to go outside the signed 32-bit integer range [-231, 231 - 1], then return 0.
+
+Assume the environment does not allow you to store 64-bit integers (signed or unsigned).
+"""
+
+# First created solution, but time limit exceeded. However, it should work...
+class Solution(object):
+    def reverse(self, x):
+        """
+        :type x: int
+        :rtype: int
+        """
+        reversedNums = []
+        multiplier = 1
+        
+        while int((x / (1 * multiplier)) % 10) >= 1:
+            reversedNums.append(int((x / (1 * multiplier)) % 10))
+            multiplier *= 10
+        
+        length = len(reversedNums) - 1
+        result = 0
+        for x in reversedNums:
+            reversing = x * (10 ** length)
+            result = result + reversing
+            length -= 1
+            
+        if result < -2**31 or result >=(2**31 - 1):
+            return 0
+        else:
+            if x < 0:
+                return -result
+            return result
