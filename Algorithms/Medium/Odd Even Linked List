@@ -1,9 +1,41 @@
 # Kevin Fang
 # 08/23/2021
 # Odd Even Linked List
-# 
+# https://leetcode.com/problems/odd-even-linked-list/
 
-""" Not solution, but decided to include it because I misunderstood what the question was asking. This function does mostly what the questions asks for, but instead bases it off of the node value and not the indices.
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def oddEvenList(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        even = ListNode()
+        odd = ListNode()
+        rnode = odd
+        even2 = even
+        counter = 1
+        while head != None:
+            if counter % 2 == 1:
+                odd.next = ListNode(head.val)
+                odd = odd.next
+            elif counter % 2 == 0:
+                even.next = ListNode(head.val)
+                even = even.next
+            if head.next == None:
+                odd.next = even2.next
+            head = head.next
+            counter += 1
+        
+        return rnode.next
+
+""" Not solution, but decided to include it because I misunderstood what the question was asking. 
+This function does mostly what the questions asks for, but instead creates the linked list based off of the node value and not the indices.
+
 # Definition for singly-linked list.
 # class ListNode(object):
 #     def __init__(self, val=0, next=None):
