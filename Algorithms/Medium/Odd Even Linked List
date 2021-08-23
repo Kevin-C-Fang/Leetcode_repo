@@ -1,0 +1,34 @@
+# Kevin Fang
+# 08/23/2021
+# Odd Even Linked List
+# 
+
+""" Not solution, but decided to include it because I misunderstood what the question was asking. This function does mostly what the questions asks for, but instead bases it off of the node value and not the indices.
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def oddEvenList(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        even = ListNode()
+        odd = ListNode()
+        rnode = odd
+        even2 = even
+        while head != None:
+            if head.val % 2 == 1:
+                odd.next = ListNode(head.val)
+                odd = odd.next
+            elif head.val % 2 == 0:
+                even.next = ListNode(head.val)
+                even = even.next
+            if head.next == None:
+                odd.next = even2.next
+            head = head.next
+        
+        return rnode.next
+"""
